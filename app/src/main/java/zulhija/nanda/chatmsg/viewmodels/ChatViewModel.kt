@@ -13,12 +13,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(private val repository: MessageRepository) : ViewModel() {
-//    val messages: StateFlow<List<Message>> = repository.getAllMessages()
-//        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
-//
-//    fun sendMessage(content: String, sender: String) {
-//        viewModelScope.launch {
-//            repository.insertMessage(Message(content = content, sender = sender))
-//        }
-//    }
+
+    val messages: StateFlow<List<Message>> = repository.lsMessages
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+
+    fun sendMessage(content: String, sender: String) {
+        viewModelScope.launch {
+            repository.insertMessage(Message(content = content, sender = sender))
+        }
+    }
 }
