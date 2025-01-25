@@ -1,6 +1,6 @@
 [versions]
-agp = "8.1.1"
-kotlin = "1.9.0"
+agp = "8.2.1"
+kotlin = "1.8.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -9,7 +9,7 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2023.08.00"
 
-hilt = "2.52" # Latest version of Hilt
+hilt = "2.44" # Latest version of Hilt
 kaptPlugin = "1.9.10" # Ensure the Kotlin Kapt plugin version matches your Kotlin version
 
 
@@ -19,6 +19,8 @@ okhttpVer = "4.9.2"
 rerofitGsonCv = "2.4.0"
 gsonVer = "2.8.5"
 coilVer = "2.4.0"
+
+room = "2.6.1" # Latest stable Room version
 
 
 
@@ -43,14 +45,21 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.7.0"}
+
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.0.0" }
+
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version = "2.44" }
 
-#kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version= "1.9.24"}
+
 #dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref="hiltversion"}
