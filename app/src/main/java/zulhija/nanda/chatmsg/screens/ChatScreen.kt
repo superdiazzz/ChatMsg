@@ -1,5 +1,6 @@
 package zulhija.nanda.chatmsg.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,14 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +35,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 import zulhija.nanda.chatmsg.Constants
 import zulhija.nanda.chatmsg.Constants.Color3
 import zulhija.nanda.chatmsg.data.Message
@@ -45,6 +50,14 @@ fun ChatScreen(
     var messageInput by remember { mutableStateOf("") }
 
     val focurManager = LocalFocusManager.current
+    val scrollState = rememberScrollState()
+
+    LaunchedEffect (Unit){
+        Log.d("JOEL", "di call")
+        delay(500)
+        scrollState.animateScrollTo(scrollState.maxValue)
+
+    }
 
     Column(
         modifier = modifier
@@ -63,6 +76,7 @@ fun ChatScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
+                .verticalScroll(scrollState)
         ) {
             messages.forEach { message ->
 
